@@ -1,4 +1,5 @@
 #Santiago Prieto 201814818
+#R 4.1.1
 #Taller A
 rm(list = ls()) 
 if(!require(pacman)) install.packages("pacman") ; require(pacman) 
@@ -39,4 +40,5 @@ ocuxedad = basegeih %>% group_by(P6040) %>% summarise(ocupado = table(ocu))
 desoxedad = basegeih %>% group_by(P6040) %>% summarise(desocupado = table(deso))
 #GRAFICOS
 gmeanxsexo = ggplot(meanxsexo) + geom_point(aes(x=P6020, y=prom_ing))
+
 
