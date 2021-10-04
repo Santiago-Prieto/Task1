@@ -37,7 +37,6 @@ ocuxsexo = basegeih %>% group_by(P6020) %>% summarise(ocupado=table(ocu))
 desoxsexo = basegeih %>% group_by(P6020) %>% summarise(desocupado=table(deso))
 ocuxedad = basegeih %>% group_by(P6040) %>% summarise(ocupado = table(ocu))
 desoxedad = basegeih %>% group_by(P6040) %>% summarise(desocupado = table(deso))
-
-
-
+#GRAFICOS
+gmeanxsexo = ggplot(meanxsexo) + geom_point(aes(x=P6020, y=prom_ing))
 
