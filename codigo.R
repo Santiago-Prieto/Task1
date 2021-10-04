@@ -9,7 +9,9 @@ vector1 = (0:100)
 vector1
 vectorimpar = (1:50)*2-1
 vectorimpar
-#FALTA EL PAR
+
+vectorpar = vector1[-vectorimpar]
+
 
 #Punto 2: Limpiar una base de datos
 cultivos = import("task_1/data/input/cultivos.xlsx", range="A9:Y362")#desde A9 pues ahí empieza la base
@@ -27,5 +29,6 @@ ca_ocu = import("task_1/data/input/2019/Cabecera - Ocupados.rds") %>% mutate(ocu
 #se crea la base pegando todas las anteriormente importadas y se dejan las variables pedidas más el indicativo
 basegeih = left_join(x = ca_cgen, y = ca_deso, by = c("directorio","secuencia_p","orden"), suffix = c("", "")) %>% left_join(., y = ca_ftrab, by = c("directorio","secuencia_p","orden"), suffix = c("", ""))%>% left_join(., y = ca_inac, by = c("directorio","secuencia_p","orden"), suffix = c("", ""))%>% left_join(., y = ca_ocu, by = c("directorio","secuencia_p","orden"), suffix = c("", ""))
 basegeih = basegeih %>% select(c(secuencia_p, orden, directorio, P6020, P6040, P6920, INGLABO, DPTO, fex_c_2011, ESC, mes, P6050, deso, ftrab, inac, ocu))
+
 
 
