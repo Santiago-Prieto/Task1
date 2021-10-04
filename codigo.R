@@ -29,6 +29,15 @@ ca_ocu = import("task_1/data/input/2019/Cabecera - Ocupados.rds") %>% mutate(ocu
 #se crea la base pegando todas las anteriormente importadas y se dejan las variables pedidas más el indicativo
 basegeih = left_join(x = ca_cgen, y = ca_deso, by = c("directorio","secuencia_p","orden"), suffix = c("", "")) %>% left_join(., y = ca_ftrab, by = c("directorio","secuencia_p","orden"), suffix = c("", ""))%>% left_join(., y = ca_inac, by = c("directorio","secuencia_p","orden"), suffix = c("", ""))%>% left_join(., y = ca_ocu, by = c("directorio","secuencia_p","orden"), suffix = c("", ""))
 basegeih = basegeih %>% select(c(secuencia_p, orden, directorio, P6020, P6040, P6920, INGLABO, DPTO, fex_c_2011, ESC, mes, P6050, deso, ftrab, inac, ocu))
+#descriptivas (5 graph y 5 tablas)
+#tablas
+meanxsexo = basegeih %>% group_by(P6020, DPTO) %>% summarise(prom_ing = mean(INGLABO, na.rm= TRUE))#PROMEDIO DE INFRESOS POR SEXO POR DEPTO.
+meanxesc = basegeih %>% group_by(ESC) %>% summarise(prom_ing = mean(INGLABO, na.rm= TRUE))
+ocuxsexo = basegeih %>% group_by(P6020) %>% summarise(ocupado=table(ocu))
+desoxsexo = basegeih %>% group_by(P6020) %>% summarise(desocupado=table(deso))
+ocuxedad = basegeih %>% group_by(P6040) %>% summarise(ocupado = table(ocu))
+desoxedad = basegeih %>% group_by(P6040) %>% summarise(desocupado = table(deso))
+
 
 
 
